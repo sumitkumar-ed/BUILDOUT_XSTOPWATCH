@@ -1,12 +1,10 @@
-// src/components/Stopwatch/Stopwatch.js
-
 import React, { useState, useRef } from 'react';
 import Button from '../Button/Button';
 import Card from '../Card/Card';
 import './Stopwatch.css';
 
 const formatTime = (time) => {
-  const minutes = String(Math.floor(time / 60)).padStart(2, '0');
+  const minutes = Math.floor(time / 60);
   const seconds = String(time % 60).padStart(2, '0');
   return `${minutes}:${seconds}`;
 };
@@ -36,7 +34,7 @@ const Stopwatch = () => {
 
   return (
     <Card>
-      <div className="time-display">{formatTime(time)}</div>
+      <div className="time-display">Time: {formatTime(time)}</div>
       <div className="button-group">
         <Button onClick={startStopwatch}>{isActive ? 'Stop' : 'Start'}</Button>
         <Button onClick={resetStopwatch}>Reset</Button>
